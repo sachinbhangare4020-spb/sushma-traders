@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Sushma Traders - Invoice Maker</title>
+<link rel="stylesheet" href="css/invoice.css">
+</head>
+<body>
+<header class="bar noprint">
+  <b>Sushma Traders - Invoice Maker</b>
+  <a href="index.html">&larr; Website</a>
+</header>
+
+<main class="wrapx noprint">
+  <section class="card">
+    <h2>Invoice details</h2>
+    <div class="grid">
+      <label>Invoice No<input id="invNo"></label>
+      <label>Date<input id="invDate" type="date"></label>
+      <label>Type<select id="invType"><option>CREDIT</option><option>CASH</option></select></label>
+      <label>Sales by<input id="salesBy" placeholder="e.g. GAURAV JI/7440788517"></label>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Billed to (party)</h2>
+    <div class="grid">
+      <label class="w2">Party name<input id="pName" placeholder="e.g. GOYAL H/W"></label>
+      <label class="w2">Address<input id="pAddr" placeholder="e.g. AARYA SAMAJ ROAD"></label>
+      <label>Mobile<input id="pMob" inputmode="numeric"></label>
+      <label>GSTIN (optional)<input id="pGstin" maxlength="15" style="text-transform:uppercase"></label>
+      <label>State<select id="pState"></select></label>
+      <label>Due balance (optional)<input id="pDue" type="number" min="0" step="0.01"></label>
+    </div>
+    <p id="gstMode" class="hint"></p>
+  </section>
+
+  <section class="card">
+    <h2>Items</h2>
+    <div class="scroll">
+      <table class="items">
+        <thead><tr><th>#</th><th>Product</th><th>HSN</th><th>MRP</th><th>Qty</th><th>Price</th><th>Disc %</th><th>GST %</th><th>Taxable</th><th>GST</th><th>Amount</th><th></th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+    <datalist id="plist"></datalist>
+    <button id="addRow" class="btn ghost">+ Add item</button>
+  </section>
+
+  <section class="card actions">
+    <button id="save" class="btn primary">Save invoice (register me)</button>
+    <button id="xlsx" class="btn">Download this invoice (Excel)</button>
+    <button id="wa" class="btn primary" style="background:#1b8a4b;border-color:#1b8a4b">Send on WhatsApp (PDF)</button>
+    <button id="print" class="btn">Print / Save as PDF</button>
+    <button id="reg" class="btn">Download all invoices (Excel)</button>
+    <button id="newInv" class="btn ghost">New invoice</button>
+    <p id="msg" class="hint"></p>
+    <p class="hint">Saved invoices is browser/device me store hote hain. Isliye "Download all invoices" se Excel backup regularly le lena.</p>
+  </section>
+</main>
+
+<h3 class="noprint pv">Preview</h3>
+<div id="sheet" class="sheet"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="js/products.js"></script>
+<script src="js/invoice-config.js"></script>
+<script src="js/invoice-calc.js"></script>
+<script src="js/invoice-excel.js"></script>
+<script src="js/invoice.js"></script>
+</body>
+</html>
